@@ -1,0 +1,28 @@
+{
+  "name": "create-next-example-app",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "export": "npm run build && next export",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@zeit/next-sass": "^1.0.0",
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.11",
+    "next": "^7.0.0",
+    "next-redux-saga": "^3.0.0",
+    "next-redux-wrapper": "^2.0.0",
+    "node-sass": "^4.9.3",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-saga": "^0.16.0"
+  },
+  "author": "Mihail Pesterev",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-proposal-do-expressions": "7.0.0-rc.1"
+  }
+}
