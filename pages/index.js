@@ -1,15 +1,11 @@
 import React from 'react';
-import Link from 'next/link';
-import Head from '../components/head';
-import Nav from '../components/nav';
-import styles from './index.scss';
-import Demo from '../components/Demo/Demo.container';
 import {connect} from 'react-redux';
+import Link from 'next/link';
+import Head from '../components/Head';
+import Nav from '../components/MainNav';
+import styles from './index.scss';
 
-//refa
-import {getSomeField} from "../components/Demo/Demo.selectors";
-import {demoGetField} from "../components/Demo/Demo.actions";
-
+import Demo from '../components/Demo/Demo.container';
 
 const Home = () => (
     <div>

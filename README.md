@@ -2,7 +2,7 @@ Todo:
 
 - +layout components
 - +demo component
-- header data
+- +header data
 - pagination
 
 

@@ -1,9 +1,10 @@
 import React from 'react';
-
+import {setLanguage} from '../../services/language';
 class Demo extends React.Component {
     render() {
-        return <h1>Demo Component</h1>;
+        const {translation} = this.props;
+        return <h1>{translation.dateLabel}</h1>;
     }
 }
 
-export default Demo;
+export default setLanguage(Demo);
