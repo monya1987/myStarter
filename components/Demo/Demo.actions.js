@@ -1,4 +1,4 @@
-export const demoGetField = text => ({
-    type: 'ADD_TODO',
-    id: 222,
+export const demoActionSetField = (demoField) => ({
+    type: 'SET_DEMO_REDUCER_FIELD_AAA',
+    payload: demoField,
 });

@@ -1,14 +1,22 @@
 const initial = {
-    aaa: 1,
-    bbb: 2
+    data: [],
+    loading: false,
 };
 
 const demo = (state = initial, action) => {
     switch (action.type) {
-        case 'AAAA':
+        case 'RECORDS/FETCH':
+        case 'RECORDS/FETCH_FAILED':
             return {
                 ...state,
-                aaa: 22
+                loading: true,
+                data: []
+            };
+        case 'RECORDS/SET':
+            return {
+                ...state,
+                loading: false,
+                data: action.payload
             };
         default:
             return state;

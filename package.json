@@ -23,6 +23,7 @@
   "author": "Mihail Pesterev",
   "license": "ISC",
   "devDependencies": {
-    "@babel/plugin-proposal-do-expressions": "7.0.0-rc.1"
+    "@babel/plugin-proposal-do-expressions": "7.0.0-rc.1",
+    "redux-logger": "^3.0.6"
   }
 }

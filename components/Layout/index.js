@@ -1,9 +1,18 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import rootReducer from '../../reducers';
+import { createStore, applyMiddleware } from 'redux';
+import createLogger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
 
-const store = createStore(rootReducer);
+
+import rootReducer from '../../reducers';
+import rootSaga from '../../sagas';
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(rootReducer, applyMiddleware(createLogger, sagaMiddleware));
+
+sagaMiddleware.run(rootSaga);
 
 class Layout extends React.Component {
     render() {
