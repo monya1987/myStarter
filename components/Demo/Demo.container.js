@@ -1,10 +1,11 @@
 import Demo from './Demo';
 import {connect} from 'react-redux';
-import {getSomeField} from './Demo.selectors';
+import {getSomeField, getSomeFieldIsLoading} from './Demo.selectors';
 import {demoActionSetField} from './Demo.actions';
 
 const mapStateToProps = (state) => ({
-    demoSelector: getSomeField(state),
+    demoData: getSomeField(state),
+    demoDataIsLoading: getSomeFieldIsLoading(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,6 +1,6 @@
 export const fetchSomeData = (id) => {
     return new Promise((resolve, reject) => {
-        fetch('/static/demo.json', {
+        fetch(`/static/demo.json?${id}`, {
             credentials: 'include'
         })
         .then(response => {
