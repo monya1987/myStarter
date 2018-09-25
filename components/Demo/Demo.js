@@ -1,7 +1,8 @@
 import React from 'react';
+import {Button} from 'react-toolbox/lib/button';
 import {setLanguage} from '../../services/language';
 class Demo extends React.Component {
-    componentWillMount() {
+    componentDidMount() {
         const {demoAction, demoData, demoDataIsLoading} = this.props;
         console.log('componentWillMount', demoData, demoDataIsLoading);
         demoAction(123456);
@@ -12,7 +13,7 @@ class Demo extends React.Component {
     }
     render() {
         const {translation} = this.props;
-        return <h1>{translation.dateLabel}</h1>;
+        return <h1>{translation.dateLabel}<Button label='Bookmark' raised primary /></h1>;
     }
 }
 

@@ -1,45 +1,33 @@
+// scss sources see https://github.com/zeit/next-plugins/tree/master/packages/next-source-maps
 const withSass = require('@zeit/next-sass');
+const withCSS = require('@zeit/next-css');
+const internalReactToolboxDeps = /react-toolbox(?!.*node_modules)/
+const externalReactToolboxDeps = /node_modules(?!\/react-toolbox(?!.*node_modules))/
 
-const commonsChunkConfig = (config, test = /\.css$/) => {
-    config.plugins = config.plugins.map(plugin => {
-        if (
-            plugin.constructor.name === 'CommonsChunkPlugin' &&
-            // disable filenameTemplate checks here because they never match
-            // (plugin.filenameTemplate === 'commons.js' ||
-            //     plugin.filenameTemplate === 'main.js')
-            // do check for minChunks though, because this has to (should?) exist
-            plugin.minChunks != null
-        ) {
-            const defaultMinChunks = plugin.minChunks;
-            plugin.minChunks = (module, count) => {
-                if (module.resource && module.resource.match(test)) {
-                    return true;
-                }
-                return defaultMinChunks(module, count);
-            };
-        }
-        return plugin;
-    });
-    return config;
-};
-
-module.exports = withSass({
+module.exports = withCSS(withSass({
     cssModules: true,
-    webpack: config => {
-        config = commonsChunkConfig(config, /\.(sass|scss|css)$/);
-        return config;
+    cssLoaderOptions: {
+        importLoaders: 1,
+        localIdentName: '[local]__[hash:base64:5]',
     },
-});
+    webpack: (config, { dev, defaultLoaders }) => {
+        config.resolve.symlinks = false;
+        config.externals = config.externals.map(external => {
+            if (typeof external !== 'function') return external;
+            return (ctx, req, cb) => (internalReactToolboxDeps.test(req) ? cb() : external(ctx, req, cb))
+        });
+        config.module.rules.push({
+            test: /\.jsx?$/,
+            loader: defaultLoaders.babel,
+            include: [internalReactToolboxDeps],
+        });
 
-// const withSass = require('@zeit/next-sass');
-//
-// module.exports = {
-//   webpack: config => {
-//     // Fixes npm packages that depend on `fs` module
-//     config.node = {
-//       fs: 'empty'
-//     }
-//
-//     return config
-//   }
-// }
+
+        return config
+    },
+    webpackDevMiddleware: config => {
+        const ignored = [config.watchOptions.ignored[0], externalReactToolboxDeps]
+        config.watchOptions.ignored = ignored
+        return config
+    },
+}));

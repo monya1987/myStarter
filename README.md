@@ -1,11 +1,12 @@
 Todo:
 
-- +layout components
-- +demo component
-- +header data
-- pagination
-
-
-- UI Library  (Material UI ?)
++ layout components
++ demo component
++ header data
++ translates
++ scss \ css
++ UI Library  (Material UI - react-toolbox ?)
+- example redesign react-toolbox
 - How to get data ? (headless WP ?)
-- translates
+- configurate webpack for DEV \ PROD
+- ?pagination
