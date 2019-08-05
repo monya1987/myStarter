@@ -8,25 +8,24 @@
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
-    "@zeit/next-sass": "^1.0.0",
+    "@zeit/next-sass": "^1.0.1",
     "classnames": "^2.2.6",
-    "css-loader": "^1.0.0",
     "lodash": "^4.17.11",
-    "next": "^7.0.0",
-    "next-redux-saga": "^3.0.0",
-    "next-redux-wrapper": "^2.0.0",
-    "node-sass": "^4.9.3",
+    "next": "^9.0.3",
+    "next-redux-saga": "^4.0.2",
+    "next-redux-wrapper": "^3.0.0-alpha.3",
+    "node-sass": "^4.12.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-redux": "^5.0.7",
+    "react-redux": "^7.1.0",
     "react-toolbox": "^2.0.0-beta.13",
     "redux": "^4.0.0",
-    "redux-saga": "^0.16.0"
+    "redux-saga": "^1.0.5"
   },
   "author": "Mihail Pesterev",
   "license": "ISC",
   "devDependencies": {
-    "@babel/plugin-proposal-do-expressions": "7.0.0-rc.1",
+    "@babel/plugin-proposal-do-expressions": "7.5.0",
     "redux-logger": "^3.0.6"
   }
 }
